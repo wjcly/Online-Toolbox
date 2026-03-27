@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(copy *)",
+      "Bash(xcopy *)",
+      "Bash(del *)",
+      "Bash(type *)",
+      "Bash(findstr *)",
+      "Bash(powershell *)",
+      "Bash(sed *)",
+      "Bash(node *)",
+      "Bash(dir *)",
+      "Bash(npm run *)",
+      "Bash(mkdir *)",
+      "Bash(rmdir *)",
+      "Bash(timeout *)",
+      "Bash(curl *)",
+      "Bash(taskkill *)",
+      "Bash(true)",
+      "Bash(sleep *)",
+      "Bash(tasklist)",
+      "Bash(ren *)",
+      "Bash(npx *)",
+      "Bash(git rm *)",
+      "Bash(git commit *)"
+    ]
+  },
+  "$version": 3
+}
