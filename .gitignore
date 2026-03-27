@@ -17,6 +17,8 @@
 *.local
 vite.config.js
 vite.config.d.ts
+tsconfig.node.tsbuildinfo
+dist-types/
 
 # IDE and local settings
 .qwen/
