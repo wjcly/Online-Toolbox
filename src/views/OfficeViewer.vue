@@ -1,16 +1,11 @@
 <template>
-  <div class="h-screen flex flex-col">
-    <!-- Header -->
+  <div class="tool-page h-screen flex flex-col">
     <header class="bg-white border-b border-gray-200 flex-shrink-0">
       <div class="px-4">
         <div class="flex items-center justify-between h-16">
-          <div class="flex items-center gap-3">
-            <button
-              @click="$router.push('/')"
-              class="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-            >
+          <div class="flex items-center gap-4">
+            <button @click="$router.push('/')" class="p-2 hover:bg-gray-100 rounded-lg">
               <ArrowLeft class="w-5 h-5" />
-              <span>Back</span>
             </button>
             <h1 class="text-xl font-bold text-gray-900">Office Viewer</h1>
           </div>
@@ -94,6 +89,7 @@ import { ref } from 'vue'
 import { ArrowLeft, Upload, FileText } from 'lucide-vue-next'
 import { VueOnlyOfficeLocal } from '@zzk-1015/vue-onlyoffice-local'
 import '@zzk-1015/vue-onlyoffice-local/style.css'
+import { toast } from '@/utils/toast'
 
 // 设置 OnlyOffice 的基础路径
 declare global {
@@ -123,7 +119,7 @@ const onEditorReady = (editor: any) => {
 
 const onEditorError = (err: Error) => {
   console.error('Editor failed:', err)
-  alert('Failed to initialize editor: ' + err.message)
+  toast.error('Failed to initialize editor: ' + err.message)
 }
 
 const onDocumentReady = () => {

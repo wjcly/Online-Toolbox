@@ -71,8 +71,6 @@ npm run preview
 resume-builder/
 ├── src/
 │   ├── views/
-│   │   ├── resume/          # Resume builder
-│   │   │   └── ResumeEditor.vue
 │   │   ├── tools/           # All utility tools
 │   │   │   ├── WebScraper.vue
 │   │   │   ├── LinkChecker.vue

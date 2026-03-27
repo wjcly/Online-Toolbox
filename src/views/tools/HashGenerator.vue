@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -73,6 +73,7 @@
 import { ref, watch } from 'vue'
 import { ArrowLeft, Copy, Check } from 'lucide-vue-next'
 import CryptoJS from 'crypto-js'
+import { toast } from '@/utils/toast'
 
 const inputText = ref('')
 const hashes = ref<Record<string, string>>({})
@@ -114,7 +115,7 @@ const paste = async () => {
   try {
     inputText.value = await navigator.clipboard.readText()
   } catch {
-    alert('无法读取剪贴板')
+    toast.error('无法读取剪贴板')
   }
 }
 </script>

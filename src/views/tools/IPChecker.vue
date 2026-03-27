@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -87,6 +87,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ArrowLeft, RefreshCw } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const queryIp = ref('')
 const ipInfo = ref<any>(null)
@@ -103,14 +104,14 @@ const queryIP = async () => {
     
     const response = await fetch(url)
     const data = await response.json()
-    
+
     if (data.error) {
-      alert('查询失败：' + data.reason)
+      toast.error('查询失败：' + data.reason)
     } else {
       ipInfo.value = data
     }
   } catch {
-    alert('查询失败，请检查网络连接')
+    toast.error('查询失败，请检查网络连接')
   } finally {
     loading.value = false
   }

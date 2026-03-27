@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -77,6 +77,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ArrowLeft } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const now = ref(new Date())
 const showSeconds = ref(true)
@@ -145,7 +146,7 @@ const startPomodoro = () => {
       pomodoroTime.value--
     } else {
       pausePomodoro()
-      alert('番茄钟结束！')
+      toast.success('番茄钟结束！', 5000)
     }
   }, 1000) as unknown as number
 }

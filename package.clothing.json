@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "generate-clothing-index": "node scripts/generateClothingIndex.js"
+  }
+}

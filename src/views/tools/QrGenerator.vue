@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -202,6 +202,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { ArrowLeft, Download, Copy, Check, QrCode, Link, Type } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const content = ref('')
 const qrType = ref<'url' | 'text' | 'email' | 'phone' | 'wifi'>('url')
@@ -253,7 +254,7 @@ const generateQrData = () => {
 const generateQR = () => {
   const data = generateQrData()
   if (!data) {
-    alert('Please enter content for the QR code')
+    toast.error('Please enter content for the QR code')
     return
   }
   qrUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=${size.value}x${size.value}&data=${encodeURIComponent(data)}&color=${fgColor.value.replace('#', '')}&bgcolor=${bgColor.value.replace('#', '')}`

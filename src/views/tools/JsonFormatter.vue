@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -121,6 +121,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ArrowLeft, Copy, Check, CheckCircle, Trash2, Minimize2, Maximize2 } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const input = ref('')
 const output = ref('')
@@ -175,7 +176,7 @@ const pasteFromClipboard = async () => {
     const text = await navigator.clipboard.readText()
     input.value = text
   } catch {
-    alert('Failed to read from clipboard')
+    toast.error('Failed to read from clipboard')
   }
 }
 

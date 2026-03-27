@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -81,6 +81,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ArrowLeft } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const min = ref(1)
 const max = ref(100)
@@ -89,13 +90,13 @@ const randomNumbers = ref<number[]>([])
 
 const generate = (count: number = 10) => {
   if (min.value >= max.value) {
-    alert('最小值必须小于最大值')
+    toast.error('最小值必须小于最大值')
     return
   }
 
   const range = max.value - min.value + 1
   if (!allowDuplicates.value && count > range) {
-    alert(`在不允许重复的情况下，最多只能生成 ${range} 个随机数`)
+    toast.warning(`在不允许重复的情况下，最多只能生成 ${range} 个随机数`)
     return
   }
 

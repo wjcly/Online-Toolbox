@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="tool-page min-h-screen bg-gray-50">
     <header class="bg-white border-b border-gray-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -103,6 +103,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { ArrowLeft } from 'lucide-vue-next'
+import { toast } from '@/utils/toast'
 
 const text = ref('')
 
@@ -171,7 +172,7 @@ const paste = async () => {
     const clipboard = await navigator.clipboard.readText()
     text.value = clipboard
   } catch {
-    alert('无法读取剪贴板')
+    toast.error('无法读取剪贴板')
   }
 }
 </script>
