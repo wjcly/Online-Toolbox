@@ -18,6 +18,9 @@
 vite.config.js
 vite.config.d.ts
 
+# IDE and local settings
+.qwen/
+
 # next.js
 /.next/
 /out/
