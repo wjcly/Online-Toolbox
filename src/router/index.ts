@@ -34,6 +34,17 @@ import DiagramEditor from '@/views/tools/DiagramEditor.vue'
 import IdPhotoMaker from '@/views/tools/IdPhotoMaker.vue'
 import ClothingManager from '@/views/tools/ClothingManager.vue'
 import BackgroundRemover from '@/views/tools/BackgroundRemover.vue'
+import TtsGenerator from '@/views/tools/TtsGenerator.vue'
+import RegexTester from '@/views/tools/RegexTester.vue'
+import NicknameGenerator from '@/views/tools/NicknameGenerator.vue'
+import CommentGenerator from '@/views/tools/CommentGenerator.vue'
+import SlackingTool from '@/views/tools/SlackingTool.vue'
+import OcrRecognizer from '@/views/tools/OcrRecognizer.vue'
+import FaviconGenerator from '@/views/tools/FaviconGenerator.vue'
+import SVGEditor from '@/views/tools/SVGEditor.vue'
+import RandomTools from '@/views/tools/RandomTools.vue'
+import MusicSearcher from '@/views/tools/MusicSearcher.vue'
+import Calendar from '@/views/tools/Calendar.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomePage },
@@ -71,6 +82,17 @@ const routes = [
   { path: '/tools/id-photo-maker', name: 'id-photo-maker', component: IdPhotoMaker },
   { path: '/tools/clothing-manager', name: 'clothing-manager', component: ClothingManager },
   { path: '/tools/background-remover', name: 'background-remover', component: BackgroundRemover },
+  { path: '/tools/tts-generator', name: 'tts-generator', component: TtsGenerator },
+  { path: '/tools/regex-tester', name: 'regex-tester', component: RegexTester },
+  { path: '/tools/nickname-generator', name: 'nickname-generator', component: NicknameGenerator },
+  { path: '/tools/comment-generator', name: 'comment-generator', component: CommentGenerator },
+  { path: '/tools/slacking-tool', name: 'slacking-tool', component: SlackingTool },
+  { path: '/tools/ocr-recognizer', name: 'ocr-recognizer', component: OcrRecognizer },
+  { path: '/tools/favicon-generator', name: 'favicon-generator', component: FaviconGenerator },
+  { path: '/tools/svg-editor', name: 'svg-editor', component: SVGEditor },
+  { path: '/tools/random-tools', name: 'random-tools', component: RandomTools },
+  { path: '/tools/music-searcher', name: 'music-searcher', component: MusicSearcher },
+  { path: '/tools/calendar', name: 'calendar', component: Calendar },
 ]
 
 const router = createRouter({

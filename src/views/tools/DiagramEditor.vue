@@ -108,7 +108,7 @@
               <input type="range" v-model.number="strokeWidth" min="1" max="10" class="w-full mt-1" />
             </div>
           </div>
-          
+
           <!-- Keyboard shortcuts help -->
           <div class="mt-6 p-3 bg-blue-50 rounded-lg">
             <h4 class="font-semibold text-blue-900 text-sm mb-2">⌨️ 快捷键</h4>
@@ -267,130 +267,6 @@
           已选择 {{ selectedElements.length }} 个元素
         </div>
       </div>
-
-      <!-- Right Sidebar - Properties -->
-      <div class="w-64 bg-white border-l border-gray-200 overflow-y-auto">
-        <div class="p-4">
-          <h3 class="font-semibold text-gray-700 mb-4">属性</h3>
-          
-          <div v-if="selectedElement && !isMultiSelected" class="space-y-4">
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">文本</label>
-              <input
-                v-model="selectedElement.text"
-                @input="updateElement"
-                type="text"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                placeholder="输入文本..."
-              />
-            </div>
-            
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">位置 X</label>
-              <input
-                v-model.number="selectedElement.x"
-                @input="updateElement"
-                type="number"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-              />
-            </div>
-            
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">位置 Y</label>
-              <input
-                v-model.number="selectedElement.y"
-                @input="updateElement"
-                type="number"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-              />
-            </div>
-
-            <div v-if="hasWidth">
-              <label class="block text-sm text-gray-600 mb-1">宽度</label>
-              <input
-                v-model.number="selectedElement.width"
-                @input="updateElement"
-                type="number"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-              />
-            </div>
-
-            <div v-if="hasHeight">
-              <label class="block text-sm text-gray-600 mb-1">高度</label>
-              <input
-                v-model.number="selectedElement.height"
-                @input="updateElement"
-                type="number"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-              />
-            </div>
-
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">填充颜色</label>
-              <input
-                v-model="selectedElement.fill"
-                @input="updateElement"
-                type="color"
-                class="w-full h-10 rounded cursor-pointer"
-              />
-            </div>
-
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">线条颜色</label>
-              <input
-                v-model="selectedElement.stroke"
-                @input="updateElement"
-                type="color"
-                class="w-full h-10 rounded cursor-pointer"
-              />
-            </div>
-
-            <div>
-              <label class="block text-sm text-gray-600 mb-1">线条粗细</label>
-              <input
-                v-model.number="selectedElement.strokeWidth"
-                @input="updateElement"
-                type="number"
-                min="1"
-                max="20"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
-              />
-            </div>
-
-            <button @click="deleteSelected" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm">
-              删除
-            </button>
-          </div>
-          
-          <div v-else-if="isMultiSelected" class="space-y-4">
-            <p class="text-sm text-gray-600">已选择 {{ selectedElements.length }} 个元素</p>
-            <button @click="deleteSelected" class="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm">
-              删除选中的元素
-            </button>
-          </div>
-
-          <div v-else class="text-center py-8 text-gray-400">
-            <MousePointer2 class="w-12 h-12 mx-auto mb-3" />
-            <p>选择一个元素编辑属性</p>
-          </div>
-
-          <!-- Quick Templates -->
-          <div class="mt-6">
-            <h4 class="font-semibold text-gray-700 mb-3">快速模板</h4>
-            <div class="space-y-2">
-              <button @click="loadTemplate('flowchart')" class="w-full px-3 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 hover:from-blue-100 hover:to-cyan-100 border border-blue-200 rounded-lg text-sm text-left transition-colors">
-                📊 基础流程图
-              </button>
-              <button @click="loadTemplate('orgchart')" class="w-full px-3 py-2 bg-gradient-to-r from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-200 rounded-lg text-sm text-left transition-colors">
-                👥 组织结构图
-              </button>
-              <button @click="loadTemplate('mindmap')" class="w-full px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 border border-green-200 rounded-lg text-sm text-left transition-colors">
-                🧠 思维导图
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -400,7 +276,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import {
   ArrowLeft, Trash2, Download, FileJson, Upload, Plus, Minus,
   Square, Circle, Diamond, Hexagon, Triangle,
-  ArrowRight, CornerDownRight, MousePointer2, Copy
+  ArrowRight, CornerDownRight, Copy
 } from 'lucide-vue-next'
 import { toast } from '@/utils/toast'
 
@@ -547,10 +423,8 @@ const handleShapeMouseDown = (shape: any, e: MouseEvent) => {
       selectedElements.value = []
     }
     selectElement(shape)
-  } else if (e.shiftKey) {
-    deselectElement(shape)
   }
-  
+
   isDragging.value = true
   dragElements.value = selectedElements.value.length > 0 ? selectedElements.value : [shape]
   dragOffset.value = {
@@ -795,63 +669,6 @@ const importJSON = (e: Event) => {
     }
   }
   reader.readAsText(file)
-}
-
-const loadTemplate = (type: string) => {
-  saveHistory()
-  clearCanvas()
-  
-  if (type === 'flowchart') {
-    shapes.value = [
-      { id: ++elementId, type: 'rounded', x: 200, y: 30, width: 120, height: 50, fill: '#e0f2fe', stroke: '#0369a1', strokeWidth: 2, text: '开始' },
-      { id: ++elementId, type: 'rectangle', x: 200, y: 120, width: 120, height: 60, fill: '#fef3c7', stroke: '#b45309', strokeWidth: 2, text: '处理' },
-      { id: ++elementId, type: 'diamond', x: 185, y: 220, width: 150, height: 80, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '判断' },
-      { id: ++elementId, type: 'rectangle', x: 50, y: 340, width: 120, height: 60, fill: '#fef3c7', stroke: '#b45309', strokeWidth: 2, text: '处理 A' },
-      { id: ++elementId, type: 'rectangle', x: 350, y: 340, width: 120, height: 60, fill: '#fef3c7', stroke: '#b45309', strokeWidth: 2, text: '处理 B' },
-      { id: ++elementId, type: 'rounded', x: 200, y: 450, width: 120, height: 50, fill: '#e0f2fe', stroke: '#0369a1', strokeWidth: 2, text: '结束' },
-    ]
-    lines.value = [
-      { id: ++elementId, type: 'arrow', x1: 260, y1: 80, x2: 260, y2: 120, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'arrow', x1: 260, y1: 180, x2: 260, y2: 220, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'arrow', x1: 185, y1: 260, x2: 110, y2: 340, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'arrow', x1: 335, y1: 260, x2: 410, y2: 340, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'arrow', x1: 110, y1: 400, x2: 260, y2: 450, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'arrow', x1: 410, y1: 400, x2: 260, y2: 450, stroke: '#374151', strokeWidth: 2 },
-    ]
-  } else if (type === 'orgchart') {
-    shapes.value = [
-      { id: ++elementId, type: 'rectangle', x: 250, y: 30, width: 150, height: 60, fill: '#fef3c7', stroke: '#b45309', strokeWidth: 2, text: '总经理' },
-      { id: ++elementId, type: 'rectangle', x: 50, y: 150, width: 120, height: 50, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '技术部' },
-      { id: ++elementId, type: 'rectangle', x: 200, y: 150, width: 120, height: 50, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '市场部' },
-      { id: ++elementId, type: 'rectangle', x: 350, y: 150, width: 120, height: 50, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '财务部' },
-    ]
-    lines.value = [
-      { id: ++elementId, type: 'straight', x1: 325, y1: 90, x2: 325, y2: 130, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'straight', x1: 110, y1: 130, x2: 540, y2: 130, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'straight', x1: 110, y1: 130, x2: 110, y2: 150, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'straight', x1: 260, y1: 130, x2: 260, y2: 150, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'straight', x1: 410, y1: 130, x2: 410, y2: 150, stroke: '#374151', strokeWidth: 2 },
-    ]
-  } else if (type === 'mindmap') {
-    shapes.value = [
-      { id: ++elementId, type: 'ellipse', x: 300, y: 200, width: 150, height: 80, fill: '#fef3c7', stroke: '#b45309', strokeWidth: 2, text: '中心主题' },
-      { id: ++elementId, type: 'ellipse', x: 50, y: 80, width: 120, height: 60, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '分支 1' },
-      { id: ++elementId, type: 'ellipse', x: 50, y: 200, width: 120, height: 60, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '分支 2' },
-      { id: ++elementId, type: 'ellipse', x: 50, y: 320, width: 120, height: 60, fill: '#dbeafe', stroke: '#1d4ed8', strokeWidth: 2, text: '分支 3' },
-      { id: ++elementId, type: 'ellipse', x: 500, y: 150, width: 120, height: 60, fill: '#dcfce7', stroke: '#15803d', strokeWidth: 2, text: '分支 4' },
-      { id: ++elementId, type: 'ellipse', x: 500, y: 280, width: 120, height: 60, fill: '#dcfce7', stroke: '#15803d', strokeWidth: 2, text: '分支 5' },
-    ]
-    lines.value = [
-      { id: ++elementId, type: 'curve', x1: 300, y1: 240, x2: 170, y2: 110, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'curve', x1: 300, y1: 240, x2: 170, y2: 230, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'curve', x1: 300, y1: 240, x2: 170, y2: 350, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'curve', x1: 450, y1: 240, x2: 500, y2: 180, stroke: '#374151', strokeWidth: 2 },
-      { id: ++elementId, type: 'curve', x1: 450, y1: 240, x2: 500, y2: 280, stroke: '#374151', strokeWidth: 2 },
-    ]
-  }
-  
-  selectAll()
-  toast.success('模板已加载')
 }
 
 // Focus editor on mount

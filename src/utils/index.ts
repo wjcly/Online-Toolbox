@@ -7,9 +7,6 @@ export * from './toast'
 // Export utilities
 export * from './export'
 
-// Avatar utilities
-export * from './avatar'
-
 // Common helpers
 export function queryDOM(selector: string): HTMLElement | null {
   return document.querySelector(selector)

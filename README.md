@@ -1,17 +1,15 @@
 # Web Tools Suite
 
-A comprehensive collection of web-based tools built with Vue 3 + TypeScript + Tailwind CSS. Includes resume builder, document viewer, format converters, and various developer utilities.
+A comprehensive collection of web-based tools built with Vue 3 + TypeScript + Tailwind CSS. Includes document viewer, format converters, and various developer utilities.
 
 ## ✨ Features
 
-- 📄 **Resume Builder** - Professional resume builder with real-time preview and multiple templates
 - 📑 **Office Viewer** - View Word, Excel, and PDF documents online
 - 🔧 **20+ Utility Tools** - Various tools for developers and everyday use
 
 ## 🛠️ Available Tools
 
 ### Document & Office
-- **Resume Builder** - Create and export professional resumes
 - **Office Viewer** - View DOCX, XLSX, PDF files in browser
 - **Format Converter** - Convert between different file formats
 - **Watermark Remover** - Remove watermarks from documents
@@ -68,7 +66,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-resume-builder/
+web-tools/
 ├── src/
 │   ├── views/
 │   │   ├── tools/           # All utility tools

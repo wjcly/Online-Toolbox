@@ -128,7 +128,12 @@ import {
   Sparkles,
   Shirt,
   Search,
-  PenTool
+  Volume2,
+  PenTool,
+  Eye,
+  ScanText,
+  Disc,
+  CalendarDays
 } from 'lucide-vue-next'
 
 const selectedCategory = ref('all')
@@ -432,6 +437,105 @@ const tools = [
     path: '/tools/diagram-editor',
     color: 'bg-purple-600',
   },
+  {
+    id: 'tts-generator',
+    name: 'TTS 语音生成',
+    description: '文本转语音工具',
+    icon: 'Volume2',
+    category: 'utility',
+    path: '/tools/tts-generator',
+    color: 'bg-emerald-500',
+  },
+  {
+    id: 'regex-tester',
+    name: 'Regex Tester',
+    description: '正则表达式在线测试',
+    icon: 'Code',
+    category: 'utility',
+    path: '/tools/regex-tester',
+    color: 'bg-indigo-500',
+  },
+  {
+    id: 'nickname-generator',
+    name: '网名生成器',
+    description: '生成创意网名昵称',
+    icon: 'Sparkles',
+    category: 'creator',
+    path: '/tools/nickname-generator',
+    color: 'bg-gradient-to-r from-pink-500 to-rose-600',
+  },
+  {
+    id: 'comment-generator',
+    name: '评论生成器',
+    description: '生成专业评论和反馈',
+    icon: 'MessageSquare',
+    category: 'creator',
+    path: '/tools/comment-generator',
+    color: 'bg-gradient-to-r from-blue-500 to-cyan-600',
+  },
+  {
+    id: 'slacking-tool',
+    name: '摸鱼神器',
+    description: '假装在工作神器',
+    icon: 'Eye',
+    category: 'utility',
+    path: '/tools/slacking-tool',
+    color: 'bg-gradient-to-r from-red-600 to-orange-600',
+  },
+  {
+    id: 'ocr-recognizer',
+    name: 'OCR 文本识别',
+    description: '图片文字识别提取',
+    icon: 'ScanText',
+    category: 'utility',
+    path: '/tools/ocr-recognizer',
+    color: 'bg-gradient-to-r from-cyan-500 to-blue-600',
+  },
+  {
+    id: 'favicon-generator',
+    name: 'Favicon 生成器',
+    description: '生成多尺寸网站图标',
+    icon: 'Image',
+    category: 'utility',
+    path: '/tools/favicon-generator',
+    color: 'bg-gradient-to-r from-blue-500 to-indigo-600',
+  },
+  {
+    id: 'svg-editor',
+    name: 'SVG 编辑器',
+    description: 'SVG 编辑与优化器',
+    icon: 'PenTool',
+    category: 'creator',
+    path: '/tools/svg-editor',
+    color: 'bg-gradient-to-r from-purple-500 to-pink-600',
+  },
+  {
+    id: 'random-tools',
+    name: '随机小工具',
+    description: '抛硬币/掷骰子/轮盘/抽签',
+    icon: 'Coins',
+    category: 'utility',
+    path: '/tools/random-tools',
+    color: 'bg-gradient-to-r from-amber-500 to-orange-600',
+  },
+  {
+    id: 'music-searcher',
+    name: '音乐搜索器',
+    description: '网易云音乐搜索播放',
+    icon: 'Disc',
+    category: 'utility',
+    path: '/tools/music-searcher',
+    color: 'bg-gradient-to-r from-pink-500 to-rose-600',
+  },
+  {
+    id: 'calendar',
+    name: '日历万年历',
+    description: '在线日历和万年历查询',
+    icon: 'CalendarDays',
+    category: 'utility',
+    path: '/tools/calendar',
+    color: 'bg-gradient-to-r from-emerald-500 to-teal-600',
+  },
 ]
 
 const categories = [
@@ -482,6 +586,11 @@ const iconMap: Record<string, any> = {
   Shirt,
   PenTool,
   Search,
+  Volume2,
+  Eye,
+  ScanText,
+  Disc,
+  CalendarDays
 }
 
 const filteredTools = computed(() => {

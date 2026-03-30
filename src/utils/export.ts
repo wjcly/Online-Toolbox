@@ -11,7 +11,7 @@ import html2canvas from 'html2canvas'
  */
 export async function exportToPDF(
   element: HTMLElement,
-  fileName: string = 'resume',
+  fileName: string = 'document',
   options: {
     scale?: number
     useCORS?: boolean
@@ -62,7 +62,7 @@ export async function exportToPDF(
  */
 export async function exportToPNG(
   element: HTMLElement,
-  fileName: string = 'resume',
+  fileName: string = 'document',
   options: {
     scale?: number
     useCORS?: boolean
@@ -106,7 +106,7 @@ export async function exportToPNG(
  * @param content - Markdown 内容
  * @param fileName - 文件名
  */
-export function exportToMarkdown(content: string, fileName: string = 'resume') {
+export function exportToMarkdown(content: string, fileName: string = 'document') {
   try {
     const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
     saveAs(blob, `${fileName}.md`)
@@ -168,7 +168,7 @@ export function printNative(content: string) {
       <html>
         <head>
           <meta charset="utf-8">
-          <title>打印简历</title>
+          <title>打印文档</title>
           <style>
             @media print {
               @page {
@@ -223,13 +223,13 @@ export type ExportOptions = {
  * @param element - DOM 元素或内容
  * @param options - 导出选项
  */
-export async function resumeExport(
+export async function documentExport(
   element: HTMLElement | string,
   options: ExportOptions
 ) {
   const {
     format,
-    fileName = 'resume',
+    fileName = 'document',
     scale = 2,
     useCORS = true
   } = options
